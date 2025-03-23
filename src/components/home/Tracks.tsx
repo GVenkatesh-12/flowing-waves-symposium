@@ -129,9 +129,14 @@ const Tracks: React.FC = () => {
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <h3>{track.title}</h3>
-            <ul className="list-disc pl-5 max-h-[500px] overflow-y-auto">
+            <ul className="list-disc pl-5 max-h-[500px] overflow-y-auto scrollbar-none">
               {track.items.map((item, idx) => (
-                <li key={idx}>{item}</li>
+                <li 
+                  key={idx} 
+                  className={`py-1 ${idx % 2 === 0 ? 'bg-white' : 'bg-conference-light-blue bg-opacity-50'} rounded`}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
           </div>
