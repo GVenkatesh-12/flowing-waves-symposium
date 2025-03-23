@@ -129,13 +129,10 @@ const Tracks: React.FC = () => {
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <h3>{track.title}</h3>
-            <ul className="list-disc pl-5">
-              {track.items.slice(0, 8).map((item, idx) => (
+            <ul className="list-disc pl-5 max-h-[500px] overflow-y-auto">
+              {track.items.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
-              {track.items.length > 8 && (
-                <li className="text-conference-blue">+ {track.items.length - 8} more topics</li>
-              )}
             </ul>
           </div>
         ))}
