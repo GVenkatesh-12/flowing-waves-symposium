@@ -44,7 +44,14 @@ const ThreeJSWaves: React.FC = () => {
     camera.rotation.x = -Math.PI / 6;
     
     // Animation variables
-    const originalVertices = Array.from(geometry.attributes.position.array);
+    const positionAttribute = geometry.attributes.position;
+    const originalVertices: number[] = [];
+    
+    // Store original vertex positions
+    for (let i = 0; i < positionAttribute.array.length; i++) {
+      originalVertices.push(positionAttribute.array[i]);
+    }
+    
     const amplitude = 0.6;
     const frequency = 0.3;
     const waveSpeed = 0.2;
