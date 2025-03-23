@@ -1,11 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Hero from '@/components/home/Hero';
+import Countdown from '@/components/home/Countdown';
+import Announcements from '@/components/home/Announcements';
+import ImportantDates from '@/components/home/ImportantDates';
+import Tracks from '@/components/home/Tracks';
+import AuthorInstructions from '@/components/home/AuthorInstructions';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="threejs-overlay">
+      <Hero />
+      <div className="container mx-auto">
+        <Countdown />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 sm:px-6">
+          <div className="col-span-2">
+            <Announcements />
+            <ImportantDates />
+          </div>
+          <div className="col-span-1">
+            <AuthorInstructions />
+          </div>
+        </div>
+        <Tracks />
       </div>
     </div>
   );
