@@ -130,15 +130,7 @@
   }
 
   .track-card ul {
-    @apply text-sm text-gray-700 space-y-1 max-h-[500px] overflow-y-auto scrollbar-none;
-  }
-
-  .track-card ul li:nth-child(odd) {
-    @apply bg-white p-1 rounded;
-  }
-
-  .track-card ul li:nth-child(even) {
-    @apply bg-blue-50 p-1 rounded;
+    @apply text-sm text-gray-700 space-y-1;
   }
 
   .animate-delay-100 {
@@ -182,11 +174,16 @@
 }
 
 .canvas-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   z-index: -1;
   overflow: hidden;
+}
+
+.threejs-overlay {
+  position: relative;
+  z-index: 1;
 }

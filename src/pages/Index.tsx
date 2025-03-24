@@ -9,7 +9,7 @@ import AuthorInstructions from '@/components/home/AuthorInstructions';
 
 const Index = () => {
   return (
-    <div>
+    <div className="threejs-overlay">
       <Hero />
       <div className="container mx-auto">
         <Countdown />
