@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 const Hero: React.FC = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[60vh] text-center px-4 sm:px-6 threejs-overlay">
-      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-4xl animate-slide-in">
+      <div className="glassmorphism p-8 rounded-2xl max-w-4xl animate-slide-in">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-conference-navy mb-4 leading-tight">
           3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
         </h1>

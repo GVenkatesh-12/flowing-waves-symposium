@@ -5,7 +5,7 @@ import { FileText } from 'lucide-react';
 const AuthorInstructions: React.FC = () => {
   return (
     <section className="py-12 px-4 sm:px-6 max-w-7xl mx-auto">
-      <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
+      <div className="glassmorphism rounded-lg p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-bold text-conference-navy mb-6">Author Instructions</h2>
         
         <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
