@@ -31,7 +31,7 @@ const ThreeJSWaves: React.FC = () => {
       color: 0x0EA5E9,
       wireframe: true,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.6
     });
     
     const waves = new THREE.Mesh(geometry, material);

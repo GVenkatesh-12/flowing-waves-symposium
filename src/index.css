@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -167,6 +168,10 @@
 
   .glassmorphism {
     @apply bg-white bg-opacity-60 backdrop-blur-md border border-white border-opacity-20 shadow-lg;
+  }
+  
+  .glassmorphism-hero {
+    @apply bg-white bg-opacity-20 backdrop-blur-sm border border-white border-opacity-10 shadow-lg;
   }
 }
 
