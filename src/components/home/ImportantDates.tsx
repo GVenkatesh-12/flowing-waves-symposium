@@ -34,7 +34,7 @@ const ImportantDates: React.FC = () => {
         {dates.map((item, index) => (
           <div 
             key={index} 
-            className="glassmorphism p-6 rounded-lg text-center animate-fade-in"
+            className="bg-white p-6 rounded-lg shadow-md text-center animate-fade-in"
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex justify-center mb-4">

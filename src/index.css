@@ -122,7 +122,7 @@
   }
 
   .track-card {
-    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-conference-light-blue p-6 h-full backdrop-blur-sm bg-opacity-90;
+    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-conference-light-blue p-6 h-full bg-white;
   }
 
   .track-card h3 {
@@ -154,7 +154,7 @@
   }
 
   .countdown-box {
-    @apply flex flex-col items-center justify-center bg-white bg-opacity-80 backdrop-blur-sm p-4 rounded-lg shadow-md min-w-20;
+    @apply flex flex-col items-center justify-center bg-white p-4 rounded-lg shadow-md min-w-20;
   }
 
   .countdown-box .number {
@@ -166,7 +166,7 @@
   }
 
   .glassmorphism {
-    @apply bg-white bg-opacity-60 backdrop-blur-md border border-white border-opacity-20 shadow-lg;
+    @apply bg-white border border-white border-opacity-20 shadow-lg;
   }
 }
 

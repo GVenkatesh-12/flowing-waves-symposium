@@ -10,10 +10,20 @@ export const Layout = () => {
   const isHomePage = location.pathname === '/';
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-sky-100 relative">
+      {/* Dot grid pattern overlay */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, #3b82f6 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
+          opacity: 0.15
+        }}
+      />
+      
       {isHomePage && <ThreeJSWaves />}
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         <Outlet />
       </main>
       <Footer />
