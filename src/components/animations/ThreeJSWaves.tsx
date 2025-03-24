@@ -12,14 +12,9 @@ const ThreeJSWaves: React.FC = () => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     
-    const renderer = new THREE.WebGLRenderer({ 
-      alpha: true, 
-      antialias: true,
-      precision: 'highp'
-    });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(window.devicePixelRatio);
     
     // Clear any existing canvas
     if (containerRef.current.firstChild) {
@@ -28,89 +23,62 @@ const ThreeJSWaves: React.FC = () => {
     
     containerRef.current.appendChild(renderer.domElement);
     
-    // Create a more professional looking wave grid
-    const gridSize = 100;
-    const segments = 75; // Higher resolution for smoother waves
-    const geometry = new THREE.PlaneGeometry(gridSize, gridSize, segments, segments);
+    // Create the wave grid geometry
+    const geometry = new THREE.PlaneGeometry(100, 100, 50, 50);
     
-    // Create a gradient material with custom shader for more professional look
-    const uniforms = {
-      time: { value: 0 },
-      color1: { value: new THREE.Color('#0EA5E9') }, // Primary blue
-      color2: { value: new THREE.Color('#2563EB') }, // Secondary blue
-    };
-    
-    const material = new THREE.ShaderMaterial({
-      uniforms: uniforms,
-      vertexShader: `
-        uniform float time;
-        varying vec2 vUv;
-        varying float vElevation;
-        
-        void main() {
-          vUv = uv;
-          
-          vec3 pos = position;
-          float dist = distance(vec2(0.5, 0.5), uv) * 2.0;
-          
-          // Create smooth wave patterns
-          float elevationA = sin(uv.x * 15.0 + time * 0.5) * 0.2;
-          float elevationB = sin(uv.y * 10.0 + time * 0.3) * 0.1;
-          float elevationC = sin(dist * 8.0 - time * 0.5) * 0.25;
-          
-          // Apply wave height with falloff from center
-          float falloff = smoothstep(1.0, 0.4, dist);
-          vElevation = (elevationA + elevationB + elevationC) * falloff;
-          pos.z += vElevation;
-          
-          // Project position to clip space
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-          
-          // Pass elevation to fragment shader
-          vElevation = vElevation;
-        }
-      `,
-      fragmentShader: `
-        uniform vec3 color1;
-        uniform vec3 color2;
-        varying float vElevation;
-        varying vec2 vUv;
-        
-        void main() {
-          // Create a smooth gradient based on elevation and position
-          float intensity = (vElevation + 0.3) * 0.8;
-          intensity = clamp(intensity, 0.0, 1.0);
-          
-          // Mix colors based on intensity for a professional gradient
-          vec3 color = mix(color1, color2, intensity);
-          
-          // Add slight edge transparency
-          float alpha = smoothstep(0.0, 0.2, 1.0 - distance(vUv, vec2(0.5)));
-          alpha = alpha * 0.7 + 0.3; // Base transparency
-          
-          gl_FragColor = vec4(color, alpha);
-        }
-      `,
+    // Create a blue gradient material
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x0EA5E9,
+      wireframe: true,
       transparent: true,
-      wireframe: false,
+      opacity: 0.6
     });
     
     const waves = new THREE.Mesh(geometry, material);
-    waves.rotation.x = -Math.PI / 2.5; // Rotate to be more visible
-    waves.position.y = -5; // Position slightly lower
+    waves.rotation.x = -Math.PI / 2; // Rotate to be horizontal
     scene.add(waves);
     
-    // Position camera for a more dramatic angle
-    camera.position.z = 25;
-    camera.position.y = 15;
-    camera.rotation.x = -Math.PI / 5.5;
+    // Position camera
+    camera.position.z = 30;
+    camera.position.y = 20;
+    camera.rotation.x = -Math.PI / 6;
+    
+    // Animation variables
+    const positionAttribute = geometry.attributes.position;
+    const originalVertices: number[] = [];
+    
+    // Store original vertex positions
+    for (let i = 0; i < positionAttribute.array.length; i++) {
+      originalVertices.push(positionAttribute.array[i]);
+    }
+    
+    const amplitude = 0.6;
+    const frequency = 0.3;
+    const waveSpeed = 0.2;
     
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       
-      // Update time uniform for shader animation
-      uniforms.time.value = performance.now() * 0.001;
+      // Update wave animation
+      const time = Date.now() * 0.001;
+      const positions = geometry.attributes.position.array;
+      
+      for (let i = 0; i < positions.length; i += 3) {
+        // Get original vertex position
+        const originalX = originalVertices[i];
+        const originalZ = originalVertices[i + 2];
+        
+        // Calculate distance from center for radial waves
+        const distance = Math.sqrt(originalX * originalX + originalZ * originalZ);
+        
+        // Apply sine wave based on distance and time
+        positions[i + 1] = 
+          amplitude * Math.sin(distance * frequency + time * waveSpeed) +
+          0.3 * Math.sin(distance * 0.8 + time * 1.2);
+      }
+      
+      geometry.attributes.position.needsUpdate = true;
       
       renderer.render(scene, camera);
     };
