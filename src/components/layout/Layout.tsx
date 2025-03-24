@@ -10,13 +10,13 @@ export const Layout = () => {
   const isHomePage = location.pathname === '/';
   
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-sky-100 relative">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-700 to-sky-600 relative">
       {/* Dot grid pattern overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #3b82f6 1px, transparent 1px)`,
-          backgroundSize: '30px 30px',
+          backgroundImage: `radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)`,
+          backgroundSize: '40px 40px',
           opacity: 0.15
         }}
       />
