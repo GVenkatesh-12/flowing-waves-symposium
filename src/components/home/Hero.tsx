@@ -2,8 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero: React.FC = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[60vh] text-center px-4 sm:px-6 threejs-overlay">
       <div className="glassmorphism p-8 rounded-2xl max-w-4xl animate-slide-in">
@@ -14,7 +17,7 @@ const Hero: React.FC = () => {
           November 06 - 08, 2025, GIET University, Gunupur, India
         </h2>
         
-        <div className="scrolling-text-container mb-6 w-full">
+        <div className="scrolling-text-container mb-6">
           <div className="scrolling-text">
             Welcome to 3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
           </div>
