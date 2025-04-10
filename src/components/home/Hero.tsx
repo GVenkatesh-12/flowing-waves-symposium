@@ -10,9 +10,15 @@ const Hero: React.FC = () => {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-conference-navy mb-4 leading-tight">
           3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
         </h1>
-        <h2 className="text-xl md:text-2xl text-conference-blue font-semibold mb-6">
+        <h2 className="text-xl md:text-2xl text-conference-blue font-semibold mb-3">
           November 06 - 08, 2025, GIET University, Gunupur, India
         </h2>
+        
+        <div className="scrolling-text-container mb-6 overflow-hidden">
+          <div className="scrolling-text">
+            Welcome to 3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
+          </div>
+        </div>
         
         <p className="text-gray-700 mb-8 max-w-2xl mx-auto">
           Join us for a symposium focusing on cutting-edge research in sustainable energy, 

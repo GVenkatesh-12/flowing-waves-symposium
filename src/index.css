@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -167,6 +168,28 @@
 
   .glassmorphism {
     @apply bg-white bg-opacity-60 backdrop-blur-md border border-white border-opacity-20 shadow-lg;
+  }
+  
+  /* Scrolling text styles */
+  .scrolling-text-container {
+    @apply relative w-full py-1 bg-conference-light-blue bg-opacity-50;
+    overflow: hidden;
+  }
+
+  .scrolling-text {
+    @apply text-conference-dark-blue font-medium whitespace-nowrap;
+    animation: scroll-text 20s linear infinite;
+    display: inline-block;
+    padding-left: 100%;
+  }
+
+  @keyframes scroll-text {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
 }
 
