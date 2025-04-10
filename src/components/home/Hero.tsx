@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
           November 06 - 08, 2025, GIET University, Gunupur, India
         </h2>
         
-        <div className="scrolling-text-container mb-6 overflow-hidden">
+        <div className="scrolling-text-container mb-6 w-full">
           <div className="scrolling-text">
             Welcome to 3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
           </div>
