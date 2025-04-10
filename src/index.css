@@ -168,6 +168,23 @@
   .glassmorphism {
     @apply bg-white bg-opacity-60 backdrop-blur-md border border-white border-opacity-20 shadow-lg;
   }
+
+  .marquee {
+    position: relative;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 5s linear infinite;
+    color: #0EA5E9;
+    font-weight: 700;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
 }
 
 @layer utilities {

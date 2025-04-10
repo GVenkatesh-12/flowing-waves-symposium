@@ -11,7 +11,13 @@ const Hero: React.FC = () => {
           3rd IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security
         </h1>
         <h2 className="text-xl md:text-2xl text-conference-blue font-semibold mb-6">
-          November 06 - 08, 2025, GIET University, Gunupur, India
+          <span>November</span>
+          <span className="marquee inline-block overflow-hidden mx-2 w-20">
+            <span className="marquee-content">
+              06 - 08, 2025
+            </span>
+          </span>
+          <span>, GIET University, Gunupur, India</span>
         </h2>
         
         <p className="text-gray-700 mb-8 max-w-2xl mx-auto">
