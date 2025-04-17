@@ -14,38 +14,32 @@ import { Image, ImageIcon } from 'lucide-react';
 import { 
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogTitle 
 } from "@/components/ui/dialog";
 
 const PhotoGallery = () => {
-  const [openImage, setOpenImage] = useState<null | {src: string, alt: string, caption: string}>(null);
+  const [openImage, setOpenImage] = useState<null | {src: string, alt: string}>(null);
 
   // Sample gallery images for 2020
   const gallery2020 = [
     {
       id: 1,
       src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-      alt: "Conference collaboration session 2020",
-      caption: "Panel discussion on sustainable energy"
+      alt: "Conference collaboration session 2020"
     },
     {
       id: 2,
       src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678",
-      alt: "Research exhibition 2020",
-      caption: "Research poster presentations"
+      alt: "Research exhibition 2020"
     },
     {
       id: 3,
       src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7", 
-      alt: "Technical workshop 2020",
-      caption: "Hands-on session on signal processing"
+      alt: "Technical workshop 2020"
     },
     {
       id: 4,
       src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
-      alt: "University campus during conference 2020",
-      caption: "Evening reception at the university"
+      alt: "University campus during conference 2020"
     }
   ];
 
@@ -54,31 +48,27 @@ const PhotoGallery = () => {
     {
       id: 1,
       src: "https://images.unsplash.com/photo-1517022812141-23620dba5c23",
-      alt: "Opening ceremony 2022",
-      caption: "Inaugural address by the chief guest"
+      alt: "Opening ceremony 2022"
     },
     {
       id: 2,
       src: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
-      alt: "Award ceremony 2022",
-      caption: "Best paper award presentation"
+      alt: "Award ceremony 2022"
     },
     {
       id: 3,
       src: "https://images.unsplash.com/photo-1466442929976-97f336a657be",
-      alt: "Conference dinner 2022",
-      caption: "Cultural program during the gala dinner"
+      alt: "Conference dinner 2022"
     },
     {
       id: 4,
       src: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-      alt: "Technical presentation 2022",
-      caption: "Keynote session on cyber security"
+      alt: "Technical presentation 2022"
     }
   ];
 
   // Handle opening the image in a lightbox
-  const handleImageClick = (image: {src: string, alt: string, caption: string}) => {
+  const handleImageClick = (image: {src: string, alt: string}) => {
     setOpenImage(image);
   };
 
@@ -103,9 +93,6 @@ const PhotoGallery = () => {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </AspectRatio>
-          </div>
-          <div className="p-3 bg-white">
-            <p className="text-sm text-gray-600">{image.caption}</p>
           </div>
         </div>
       ))}
@@ -132,9 +119,6 @@ const PhotoGallery = () => {
                         className="w-full h-full object-cover rounded-md"
                       />
                     </AspectRatio>
-                  </div>
-                  <div className="p-2 text-center">
-                    <p className="text-sm text-gray-600">{image.caption}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -197,25 +181,17 @@ const PhotoGallery = () => {
         </Tabs>
       </div>
 
-      {/* Lightbox Dialog */}
+      {/* Lightbox Dialog - Image only, no text */}
       <Dialog open={openImage !== null} onOpenChange={handleCloseDialog}>
         <DialogContent className="max-w-4xl w-full p-1 sm:p-2 bg-white">
           {openImage && (
-            <>
-              <div className="relative w-full">
-                <img 
-                  src={openImage.src} 
-                  alt={openImage.alt} 
-                  className="w-full h-auto object-contain max-h-[70vh]" 
-                />
-              </div>
-              <div className="p-4 text-center">
-                <DialogTitle className="text-lg font-medium">{openImage.alt}</DialogTitle>
-                <DialogDescription className="text-sm mt-1">
-                  {openImage.caption}
-                </DialogDescription>
-              </div>
-            </>
+            <div className="relative w-full">
+              <img 
+                src={openImage.src} 
+                alt={openImage.alt} 
+                className="w-full h-auto object-contain max-h-[70vh]" 
+              />
+            </div>
           )}
         </DialogContent>
       </Dialog>
