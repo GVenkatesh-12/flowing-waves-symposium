@@ -99,6 +99,9 @@ const Navbar = () => {
             <Link to="/accepted-papers" className={`nav-link ${isActive('/accepted-papers') ? 'active' : ''}`}>
               Accepted Papers
             </Link>
+            <Link to="/gallery" className={`nav-link ${isActive('/gallery') ? 'active' : ''}`}>
+              Gallery
+            </Link>
             <Link to="/venue" className={`nav-link ${isActive('/venue') ? 'active' : ''}`}>
               Venue
             </Link>
@@ -217,6 +220,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Accepted Papers
+            </Link>
+            <Link 
+              to="/gallery" 
+              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-conference-light-blue"
+              onClick={() => setIsOpen(false)}
+            >
+              Gallery
             </Link>
             <Link 
               to="/venue" 

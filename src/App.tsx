@@ -17,6 +17,7 @@ import OrganizingCommittee from "./pages/committees/OrganizingCommittee";
 import InternationalAdvisory from "./pages/committees/InternationalAdvisory";
 import NationalAdvisory from "./pages/committees/NationalAdvisory";
 import TechnicalProgram from "./pages/committees/TechnicalProgram";
+import PhotoGallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="speakers" element={<Speakers />} />
             <Route path="accepted-papers" element={<AcceptedPapers />} />
             <Route path="venue" element={<Venue />} />
+            <Route path="gallery" element={<PhotoGallery />} />
             <Route path="contact" element={<Contact />} />
             <Route path="committee">
               <Route path="organizing" element={<OrganizingCommittee />} />
