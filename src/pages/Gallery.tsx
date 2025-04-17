@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { 
@@ -11,8 +11,16 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Image, ImageIcon } from 'lucide-react';
+import { 
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle 
+} from "@/components/ui/dialog";
 
 const PhotoGallery = () => {
+  const [openImage, setOpenImage] = useState<null | {src: string, alt: string, caption: string}>(null);
+
   // Sample gallery images for 2020
   const gallery2020 = [
     {
@@ -69,18 +77,33 @@ const PhotoGallery = () => {
     }
   ];
 
+  // Handle opening the image in a lightbox
+  const handleImageClick = (image: {src: string, alt: string, caption: string}) => {
+    setOpenImage(image);
+  };
+
+  // Close the lightbox dialog
+  const handleCloseDialog = () => {
+    setOpenImage(null);
+  };
+
   // Render gallery images in a grid
   const renderGalleryGrid = (images: any[]) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
       {images.map((image) => (
         <div key={image.id} className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-          <AspectRatio ratio={4/3}>
-            <img 
-              src={image.src} 
-              alt={image.alt} 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </AspectRatio>
+          <div 
+            className="cursor-pointer"
+            onClick={() => handleImageClick(image)}
+          >
+            <AspectRatio ratio={4/3}>
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </AspectRatio>
+          </div>
           <div className="p-3 bg-white">
             <p className="text-sm text-gray-600">{image.caption}</p>
           </div>
@@ -98,13 +121,18 @@ const PhotoGallery = () => {
             <CarouselItem key={image.id}>
               <Card>
                 <CardContent className="p-1">
-                  <AspectRatio ratio={4/3}>
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </AspectRatio>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => handleImageClick(image)}
+                  >
+                    <AspectRatio ratio={4/3}>
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </AspectRatio>
+                  </div>
                   <div className="p-2 text-center">
                     <p className="text-sm text-gray-600">{image.caption}</p>
                   </div>
@@ -168,6 +196,29 @@ const PhotoGallery = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={openImage !== null} onOpenChange={handleCloseDialog}>
+        <DialogContent className="max-w-4xl w-full p-1 sm:p-2 bg-white">
+          {openImage && (
+            <>
+              <div className="relative w-full">
+                <img 
+                  src={openImage.src} 
+                  alt={openImage.alt} 
+                  className="w-full h-auto object-contain max-h-[70vh]" 
+                />
+              </div>
+              <div className="p-4 text-center">
+                <DialogTitle className="text-lg font-medium">{openImage.alt}</DialogTitle>
+                <DialogDescription className="text-sm mt-1">
+                  {openImage.caption}
+                </DialogDescription>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
