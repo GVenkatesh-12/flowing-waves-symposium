@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Gallery, Image as ImageIcon } from 'lucide-react';
+import { Image, ImageIcon } from 'lucide-react';
 
 const PhotoGallery = () => {
   // Sample gallery images for 2020
@@ -123,7 +123,7 @@ const PhotoGallery = () => {
     <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 max-w-5xl">
       <div className="glassmorphism p-6 sm:p-8 rounded-xl">
         <div className="flex items-center gap-3 mb-6">
-          <Gallery className="h-6 w-6 text-conference-blue" />
+          <Image className="h-6 w-6 text-conference-blue" />
           <h1 className="text-3xl md:text-4xl font-bold text-conference-navy">Photo Gallery</h1>
         </div>
         
