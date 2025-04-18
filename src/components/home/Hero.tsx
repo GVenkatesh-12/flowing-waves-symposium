@@ -7,8 +7,10 @@ const Hero: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[60vh] text-center px-2 sm:px-6">
+    <div className="relative flex flex-col items-center justify-center min-h-[50vh] text-center px-4 sm:px-6">
+      {/* Wrapper to Maintain Space in Layout */}
       <div className="relative w-full h-screen flex justify-center items-center">
+        {/* Absolute Positioned Text Over Animation */}
         <div className="absolute z-10 max-w-4xl text-center p-4 sm:p-8">
           <h1 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-bold text-white mb-3 sm:mb-4 leading-tight">
             2025 IEEE 3rd International Symposium on Sustainable Energy, Signal Processing and Cybersecurity
