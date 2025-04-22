@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { FileText, Upload, Check, Info } from 'lucide-react';
 
 const PaperSubmission = () => {
   return (
-    <div className="container mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:px-8 max-w-5xl threejs-overlay">
-      <div className="glassmorphism p-4 sm:p-6 md:p-8 rounded-xl">
+    <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 max-w-5xl threejs-overlay">
+      <div className="glassmorphism p-8 rounded-xl">
         <div className="prose max-w-none text-gray-700">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-conference-navy mb-4 sm:mb-6">
             Guideline to Authors
@@ -103,10 +102,13 @@ const PaperSubmission = () => {
             <a
               href="https://cmt3.research.microsoft.com/isssc2025"
               target="_blank"
-              className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 bg-conference-blue text-white text-sm sm:text-base rounded-md hover:bg-conference-dark-blue transition-colors shadow-md w-full"
+              className="flex items-center gap-2 px-6 py-4 bg-gradient-to-br from-[#8B5CF6] to-[#D946EF] text-white rounded-lg hover:from-[#7C3AED] hover:to-[#C026D3] transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/50 font-bold text-lg"
             >
-              <Upload className="h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0" />
-              <span>Submit Paper</span>
+              <Upload className="h-6 w-6 mr-2" />
+              Submit Paper
+              <span className="ml-2 animate-pulse bg-white/20 px-2 py-1 rounded-full text-sm">
+                Important
+              </span>
             </a>
           </div>
 
