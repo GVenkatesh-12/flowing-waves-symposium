@@ -7,9 +7,8 @@ const Hero: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[50vh] py-16 md:py-24">
-      {/* Logo Section */}
-      <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 flex flex-wrap justify-center items-center gap-4 md:gap-8 w-[90%] max-w-3xl z-10">
+    <div className="relative flex flex-col items-center justify-center min-h-[50vh] py-4 sm:py-6">
+      <div className="absolute top-2 md:top-4 left-1/2 -translate-x-1/2 flex flex-wrap justify-center items-center gap-4 md:gap-8 w-[90%] max-w-3xl z-10">
         <img
           src="/documents/logo-3-new-4.png"
           alt="Logo 1"
@@ -27,24 +26,23 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Hero Content */}
-      <div className="w-full min-h-[calc(100vh-8rem)] flex justify-center items-center px-4 sm:px-6">
-        <div className="relative z-10 max-w-4xl text-center mt-20 md:mt-24">
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <div className="w-full flex justify-center items-center px-4 sm:px-6 mt-12 md:mt-16">
+        <div className="relative z-10 max-w-4xl text-center">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-2 md:mb-3 leading-tight">
             <span className="inline-block">2025 IEEE 3rd International</span>{' '}
             <span className="inline-block">Symposium on Sustainable Energy,</span>{' '}
             <span className="inline-block">Signal Processing and Cybersecurity</span>
           </h1>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl text-white font-semibold mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl text-white font-semibold mb-2">
             November 06 - 08, 2025, GIET University, Gunupur, Odisha
           </h2>
 
-          <p className="text-[#FFD700] text-center font-bold text-lg sm:text-xl mb-4">
+          <p className="text-[#FFD700] text-center font-bold text-lg sm:text-xl mb-2">
             ELECTRICAL AND ELECTRONICS ENGINEERING
           </p>
 
-          <p className="text-white text-base sm:text-lg font-semibold mb-8 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed">
+          <p className="text-white text-base sm:text-lg font-semibold mb-4 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed">
             The 2025 IEEE 3rd International Symposium on Sustainable Energy, Signal Processing, and Cybersecurity (iSSSC 2025) is a leading forum for researchers, engineers, and industry experts to share innovations, research, and challenges in these key interdisciplinary fields. The symposium promotes collaboration and idea exchange through keynote talks, technical presentations, and specialized workshops focused on the latest advancements and future trends.
           </p>
 
